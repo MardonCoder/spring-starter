@@ -22,6 +22,7 @@ public class ConnectionPool implements InitializingBean {
         this.properties = properties;
     }
 
+    // only for singletones
     private void init(){
         System.out.println("Init connection pool");
     }

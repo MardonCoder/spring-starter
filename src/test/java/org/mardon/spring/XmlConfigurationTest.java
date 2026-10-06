@@ -11,11 +11,12 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 public class XmlConfigurationTest {
     @Test
     void beanConfigurationTest(){
-        var context = new ClassPathXmlApplicationContext("application.xml");
-        var pool = context.getBean("p1", ConnectionPool.class);
-        var companyRepository = context.getBean("companyRepository", CompanyRepository.class);
-        System.out.println(pool);
-        System.out.println(companyRepository);
+        try (var context = new ClassPathXmlApplicationContext("application.xml")) {
+            var pool = context.getBean("p1", ConnectionPool.class);
+            var companyRepository = context.getBean("companyRepository", CompanyRepository.class);
+            System.out.println(pool);
+            System.out.println(companyRepository);
+        }
 
         assertSoftly(s -> {
 //            s.assertThat(pool.)

@@ -21,6 +21,5 @@ public class XmlConfigurationTest {
         assertSoftly(s -> {
 //            s.assertThat(pool.)
         });
-
     }
 }

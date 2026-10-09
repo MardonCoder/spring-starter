@@ -1,5 +1,7 @@
 package org.mardon.spring.database.pool;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.InitializingBean;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public class ConnectionPool implements InitializingBean {
     }
 
     // only for singletones
+    @PostConstruct
     private void init(){
         System.out.println("Init connection pool");
     }
@@ -32,6 +35,7 @@ public class ConnectionPool implements InitializingBean {
         System.out.println("Init after properties pool");
     }
 
+    @PreDestroy
     private void destroy(){
         System.out.println("Closing connection pool");
     }

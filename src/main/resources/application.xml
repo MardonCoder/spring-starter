@@ -8,8 +8,12 @@
                             http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 <!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
 
+    <context:annotation-config/>
     <context:property-placeholder location="classpath:application.properties"/>
 
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
+
+<!--    spel-->
 <!--    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">-->
 <!--        <property name="locations" value="classpath:application.properties"/>-->
 <!--    </bean>-->
@@ -21,10 +25,10 @@
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
-    <bean id="pool1" name="p1,poo1,pl1" class="org.mardon.spring.database.pool.ConnectionPool"
-          init-method="init"
-          destroy-method="destroy"
-          scope="singleton">
+    <bean id="pool1" name="p1,poo1,pl1" class="org.mardon.spring.database.pool.ConnectionPool">
+<!--          init-method="init"-->
+<!--          destroy-method="destroy"-->
+<!--          scope="singleton"x>-->
         <constructor-arg index="0" type="java.lang.String" value="${db.username}"/>
         <constructor-arg index="1" type="java.lang.Integer" name="poolSize" value="${db.pool.size}"/>
         <constructor-arg index="2" type="java.util.List"> <!-- также можно указывать name вместо index -->

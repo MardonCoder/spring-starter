@@ -29,6 +29,7 @@
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
+    <bean id="pool2" class="org.mardon.spring.database.pool.ConnectionPool"/>
     <bean id="pool1" name="p1,poo1,pl1" class="org.mardon.spring.database.pool.ConnectionPool">
 <!--          init-method="init"-->
 <!--          destroy-method="destroy"-->

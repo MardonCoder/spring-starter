@@ -16,10 +16,10 @@ public class XmlConfigurationTest {
             var companyRepository = context.getBean("companyRepository", CompanyRepository.class);
             System.out.println(pool);
             System.out.println(companyRepository);
+            assertSoftly(s -> {
+                s.assertThat(companyRepository.getConnectionPool()).isNotNull();
+            });
         }
 
-        assertSoftly(s -> {
-//            s.assertThat(pool.)
-        });
     }
 }

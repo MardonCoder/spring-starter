@@ -16,7 +16,7 @@ public class XmlConfigurationTest {
     @Test
     void beanConfigurationTest(){
         try (var context = new ClassPathXmlApplicationContext("application.xml")) {
-            var pool = context.getBean("p1", ConnectionPool.class);
+            var pool = context.getBean("pool1", ConnectionPool.class);
             var companyRepository = context.getBean("companyRepository", CrudRepository.class);
             System.out.println(pool);
             System.out.println(companyRepository);

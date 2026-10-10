@@ -1,7 +1,9 @@
 package org.mardon.spring.database.repository;
 
 import org.mardon.spring.database.pool.ConnectionPool;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UserRepository {
 
     private final ConnectionPool connectionPool;

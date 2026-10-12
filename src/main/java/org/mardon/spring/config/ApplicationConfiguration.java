@@ -38,6 +38,7 @@ public class ApplicationConfiguration {
         }
 
         @Bean
+//        @Profile("prod|web")
         public UserRepository userRepository2(@Qualifier("pool2") ConnectionPool pool2){
                 return new UserRepository(pool2);
         }

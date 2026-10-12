@@ -26,7 +26,11 @@ public class ConfigurationTest {
 
     @Test
     void javaAndAnnotationsConfTest(){
-        try (var context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class)) {
+        try (var context = new AnnotationConfigApplicationContext()) {
+            context.register(ApplicationConfiguration.class);
+            context.getEnvironment().setActiveProfiles("prod", "smth");
+            context.refresh();
+
             var companyRepository = context.getBean("companyRepository", CrudRepository.class);
             Company foundCompany = (Company) companyRepository.findById(10).orElse(null);
             assertThat(foundCompany.id()).isEqualTo(10);

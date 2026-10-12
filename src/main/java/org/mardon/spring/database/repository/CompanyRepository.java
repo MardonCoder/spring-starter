@@ -32,7 +32,7 @@ public class CompanyRepository implements  CrudRepository<Integer, Company> {
 //    @Value("${db.pool.size}")
     private final Integer poolSize;
 
-    public CompanyRepository(ConnectionPool pool1,
+    public CompanyRepository(@Qualifier("pool1") ConnectionPool pool1,
                              List<ConnectionPool> pools,
                              @Value("${db.pool.size}") Integer poolSize) {
         this.pool1 = pool1;

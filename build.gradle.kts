@@ -17,6 +17,8 @@ dependencies {
     implementation("org.springframework:spring-core:$springVersion")
     implementation("org.springframework:spring-context:$springVersion")
 
+    implementation("org.postgresql:postgresql:42.6.2")
+
     implementation("jakarta.annotation:jakarta.annotation-api:$jakartaAnnotationVersion")
 
     testImplementation(platform("org.junit:junit-bom:6.0.0"))

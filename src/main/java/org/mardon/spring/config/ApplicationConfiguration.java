@@ -13,17 +13,17 @@ import org.springframework.stereotype.Component;
 //@ImportResource("classpath:application.xml")
 @Import(WebConfiguration.class)
 @Configuration(proxyBeanMethods = true)
-@PropertySource("classpath:application.properties")
-@ComponentScan(
-        basePackages = "org.mardon.spring",
-        useDefaultFilters = false,
-        includeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Component.class),
-                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = CrudRepository.class),
-                @ComponentScan.Filter(type = FilterType.REGEX, pattern = "org\\..+Repository")
-
-        }
-)
+//@PropertySource("classpath:application.properties")
+//@ComponentScan(
+//        basePackages = "org.mardon.spring",
+//        useDefaultFilters = false,
+//        includeFilters = {
+//                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Component.class),
+//                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = CrudRepository.class),
+//                @ComponentScan.Filter(type = FilterType.REGEX, pattern = "org\\..+Repository")
+//
+//        }
+//)
 public class ApplicationConfiguration {
 
         @Bean("pool2")

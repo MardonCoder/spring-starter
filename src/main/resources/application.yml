@@ -18,5 +18,12 @@ db:
       timeout: 2
     - size: 3
       timeout: 3
-
 #spring.profiles.active: qa
+
+logging:
+  level:
+    root: INFO
+    org.mardon.spring.database.pool: INFO
+#  file:
+#    name: dele.log
+#    path: /

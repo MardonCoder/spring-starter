@@ -2,6 +2,7 @@ package org.mardon.spring.database.repository;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.mardon.spring.bpp.Auditing;
 import org.mardon.spring.bpp.Transaction;
 import org.mardon.spring.database.entity.Company;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Scope(BeanDefinition.SCOPE_SINGLETON)
 @Repository
 @Auditing
@@ -44,7 +46,7 @@ public class CompanyRepository implements  CrudRepository<Integer, Company> {
 
     @PostConstruct
     private void init(){
-        System.out.println("Initializing company rep");
+        log.info("Initializing company rep");
     }
 
     public ConnectionPool getPool1(){
@@ -53,13 +55,13 @@ public class CompanyRepository implements  CrudRepository<Integer, Company> {
 
     @Override
     public Optional<Company> findById(Integer id) {
-        System.out.printf("Finding by id %d...%n", id);
+        log.info("Finding by id {}...", id);
         return Optional.of(new Company(id));
     }
 
     @Override
     public void delete(Company entity) {
-        System.out.printf("Deleting by id %d...%n", entity.id());
+        log.info("Deleting by id {}...%n", entity.id());
     }
 
 //    @Autowired

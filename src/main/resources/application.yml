@@ -27,3 +27,21 @@ logging:
 #  file:
 #    name: dele.log
 #    path: /
+
+spring:
+  docker:
+    compose:
+      # Поведение при старте: always, if-running, ignore (по умолчанию: always)
+      lifecycle-management: start-and-stop
+      # Поведение при остановке приложения: stop, down (down удалит контейнеры и сеть)
+      stop:
+        command: stop
+      # Тайм-аут ожидания готовности контейнера
+      readiness:
+        timeout: 2m
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true

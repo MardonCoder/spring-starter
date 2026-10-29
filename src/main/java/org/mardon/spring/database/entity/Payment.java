@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "payments")
+@Table(name = "payment")
 public class Payment implements BaseEntity<Long> {
 
     @Id
@@ -19,6 +19,6 @@ public class Payment implements BaseEntity<Long> {
     private Integer amount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "receiver_id")
     private User receiver;
 }

@@ -40,6 +40,12 @@ spring:
       readiness:
         timeout: 2m
 
+  sql:
+    init:
+      mode: always # Выполнять скрипты всегда (never, embedded, always)
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+
   jpa:
     properties:
       hibernate:

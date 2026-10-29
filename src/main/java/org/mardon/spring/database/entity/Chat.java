@@ -15,11 +15,11 @@ import java.util.Map;
 @Builder
 @Entity
 @Table(name = "chat")
-public class Chat implements BaseEntity<Integer>{
+public class Chat implements BaseEntity<Long>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Column(unique = true, nullable = false)
     private String name;

@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "user_chat")
+@Table(name = "users_chat")
 public class UserChat implements BaseEntity<Long>{
 
     @Id

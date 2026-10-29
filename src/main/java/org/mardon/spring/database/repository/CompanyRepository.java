@@ -62,7 +62,7 @@ public class CompanyRepository implements  CrudRepository<Integer, Company> {
 
     @Override
     public void delete(Company entity) {
-        log.info("Deleting by id {}...%n", entity.id());
+        log.info("Deleting by id {}...%n", entity.getId());
     }
 
 //    @Autowired

@@ -2,3 +2,9 @@ db:
   username: test
   password: test
 
+spring:
+  docker:
+    compose:
+      skip:
+        in-tests: false
+

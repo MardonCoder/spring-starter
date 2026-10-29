@@ -50,10 +50,6 @@ public class CompanyRepository implements  CrudRepository<Integer, Company> {
         log.info("Initializing company rep");
     }
 
-    public ConnectionPool getPool1(){
-        return pool1;
-    }
-
     @Override
     public Optional<Company> findById(Integer id) {
         log.info("Finding by id {}...", id);

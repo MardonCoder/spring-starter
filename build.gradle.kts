@@ -23,6 +23,9 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
+    // Добавить для работы Docker Compose в тестах:
+    testImplementation("org.springframework.boot:spring-boot-docker-compose")
+
 //    val springVersion = "7.0.9"
 //    val assertjVersion = "3.27.7"
 //    val jakartaAnnotationVersion = "3.0.0"

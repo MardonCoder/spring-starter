@@ -12,58 +12,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.Repository;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-@Slf4j
-@Scope(BeanDefinition.SCOPE_SINGLETON)
-@Repository
-@Auditing
-@Transaction
-@RequiredArgsConstructor
-public class CompanyRepository implements  CrudRepository<Integer, Company> {
+public interface CompanyRepository extends Repository<Company, Integer> {
 
-//    @InjectBean
-//    @Resource(name = "pool1")
+    Optional<Company> findById(Integer id);
 
-//    @Autowired
-//    @Qualifier("pool1")
-    private final ConnectionPool pool1;
-//    @Autowired
-    private final List<ConnectionPool> pools;
-    @Value("${db.pool.size}")
-    private final Integer poolSize;
-
-//    public CompanyRepository(@Qualifier("pool1") ConnectionPool pool1,
-//                             List<ConnectionPool> pools,
-//                             @Value("${db.pool.size}") Integer poolSize) {
-//        this.pool1 = pool1;
-//        this.pools = pools;
-//        this.poolSize = poolSize;
-//    }
-
-    @PostConstruct
-    private void init(){
-        log.info("Initializing company rep");
-    }
-
-    @Override
-    public Optional<Company> findById(Integer id) {
-        log.info("Finding by id {}...", id);
-        return Optional.of(new Company(id, null, Collections.emptyMap()));
-    }
-
-    @Override
-    public void delete(Company entity) {
-        log.info("Deleting by id {}...%n", entity.getId());
-    }
-
-//    @Autowired
-//    @Qualifier("pool1")
-//    public void setPool1(ConnectionPool pool1) {
-//        this.pool1 = pool1;
-//    }
+    void delete(Company entity);
 }

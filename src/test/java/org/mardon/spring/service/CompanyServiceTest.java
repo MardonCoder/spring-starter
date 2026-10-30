@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mardon.spring.database.entity.Company;
 import org.mardon.spring.database.repository.CompanyRepository;
-import org.mardon.spring.database.repository.CrudRepository;
 import org.mardon.spring.dto.CompanyReadDto;
 import org.mardon.spring.listener.entity.EntityEvent;
 import org.mockito.InjectMocks;
@@ -26,7 +25,7 @@ class CompanyServiceTest {
     public static final Integer COMPANY_ID = 1;
 
     @Mock
-    private CrudRepository<Integer, Company> companyRepository;
+    private CompanyRepository companyRepository;
     @Mock
     private UserService userService;
     @Mock

@@ -1,7 +1,6 @@
 package org.mardon.spring.config;
 
 import org.mardon.spring.database.pool.ConnectionPool;
-import org.mardon.spring.database.repository.CrudRepository;
 import org.mardon.spring.database.repository.UserRepository;
 import org.mardon.web.config.WebConfiguration;
 import org.springframework.beans.factory.annotation.Qualifier;

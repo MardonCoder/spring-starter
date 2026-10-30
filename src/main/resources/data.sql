@@ -1,7 +1,8 @@
 INSERT INTO company (name)
 VALUES ('Google'),
        ('Meta'),
-       ('Amazon');
+       ('Amazon'),
+       ('Apple');
 
 INSERT INTO company_locales (company_id, lang, description)
 VALUES ((SELECT id FROM company WHERE name = 'Google'), 'en', 'Google description'),

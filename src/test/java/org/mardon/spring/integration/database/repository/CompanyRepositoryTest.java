@@ -8,6 +8,7 @@ import org.mardon.spring.integration.annotation.IT;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.Map;
 
@@ -22,12 +23,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CompanyRepositoryTest {
 
     private final EntityManager entityManager;
+    private final TransactionTemplate transactionTemplate;
 
     @Test
     void findById(){
-        var company = entityManager.find(Company.class, 1);
-        assertThat(company).isNotNull();
-        assertThat(company.getLocales()).hasSize(2);
+//        transactionTemplate.executeWithoutResult(tx->{
+            var company = entityManager.find(Company.class, 1);
+            assertThat(company).isNotNull();
+            assertThat(company.getLocales()).hasSize(2);
+            //        });
     }
 
     @Test

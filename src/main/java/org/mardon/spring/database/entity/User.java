@@ -9,6 +9,8 @@ import java.util.List;
 
 @Getter
 @Setter
+@ToString(exclude = "userChats")
+@EqualsAndHashCode(of = "username")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

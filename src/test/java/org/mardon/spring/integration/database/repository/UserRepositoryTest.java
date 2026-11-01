@@ -3,6 +3,7 @@ package org.mardon.spring.integration.database.repository;
 import lombok.RequiredArgsConstructor;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mardon.spring.database.entity.Role;
 import org.mardon.spring.database.entity.User;
 import org.mardon.spring.database.repository.UserRepository;
 import org.mardon.spring.integration.annotation.IT;
@@ -21,5 +22,11 @@ class UserRepositoryTest {
     void checkQueries(){
         var users = userRepository.findAllBy("a", "ov");
         assertThat(users).hasSize(3);
+    }
+
+    @Test
+    void checkUpdate(){
+        var resultCount = userRepository.updateRole(Role.USER, 1L, 5L);
+        assertEquals(2, resultCount);
     }
 }

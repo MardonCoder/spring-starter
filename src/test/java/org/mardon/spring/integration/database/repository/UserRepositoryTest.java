@@ -49,10 +49,10 @@ class UserRepositoryTest {
         var pageable = PageRequest.of(1, 2, Sort.by("id"));
         var slice = userRepository.findAllBy(pageable);
 
-        slice.forEach(user -> System.out.println(user.getId()));
+        slice.forEach(user -> System.out.println(user.getCompany().getName()));
         while (slice.hasNext()){
             slice = userRepository.findAllBy(slice.nextPageable());
-            slice.forEach(user -> System.out.println(user.getId()));
+            slice.forEach(user -> System.out.println(user.getCompany().getName()));
         }
     }
 }

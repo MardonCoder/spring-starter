@@ -42,7 +42,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findTop3ByBirthDateBefore(LocalDate birthDate, Sort sort);
 
-    @EntityGraph()
+//    @EntityGraph("User.company")
+    @EntityGraph(attributePaths = {"company", "company.locales"})
     @Query(value = "select u from User u",
             countQuery = "select count(distinct u.firstName) from User u")
     Page<User> findAllBy(Pageable pageable);

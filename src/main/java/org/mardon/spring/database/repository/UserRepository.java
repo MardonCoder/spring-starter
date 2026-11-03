@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.mardon.spring.database.entity.Role;
 import org.mardon.spring.database.entity.User;
 import org.mardon.spring.database.pool.ConnectionPool;
+import org.mardon.spring.dto.PersonalInfo;
+import org.mardon.spring.dto.PersonalInfo2;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -48,4 +50,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "select u from User u",
             countQuery = "select count(distinct u.firstName) from User u")
     Page<User> findAllBy(Pageable pageable);
+
+//    <T> List<T> findAllByCompanyId(Integer companyId, Class<T> clazz);
+
+    @Query( nativeQuery = true,
+    value = "SELECT firstname," +
+            "lastname," +
+            "birth_date birthDate " +
+            "FROM users WHERE company_id = :companyId")
+    List<PersonalInfo2> findAllByCompanyId(Integer companyId);
+
 }

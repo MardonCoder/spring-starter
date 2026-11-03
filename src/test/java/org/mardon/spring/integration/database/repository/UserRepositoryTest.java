@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.mardon.spring.database.entity.Role;
 import org.mardon.spring.database.entity.User;
 import org.mardon.spring.database.repository.UserRepository;
+import org.mardon.spring.dto.PersonalInfo;
 import org.mardon.spring.integration.annotation.IT;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,6 +22,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @RequiredArgsConstructor
 class UserRepositoryTest {
     private final UserRepository userRepository;
+
+    @Test
+    void checkProjections(){
+        var users = userRepository.findAllByCompanyId(1);
+        users.forEach(u -> System.out.println(u.toString()));
+        assertThat(users.size()).isEqualTo(2);
+    }
 
     @Test
     void checkQueries(){

@@ -7,6 +7,7 @@ import org.mardon.spring.database.entity.Role;
 import org.mardon.spring.database.entity.User;
 import org.mardon.spring.database.repository.UserRepository;
 import org.mardon.spring.dto.PersonalInfo;
+import org.mardon.spring.dto.UserFilter;
 import org.mardon.spring.integration.annotation.IT;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Filter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,6 +24,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @RequiredArgsConstructor
 class UserRepositoryTest {
     private final UserRepository userRepository;
+
+    @Test
+    void checkCustomImplementation(){
+        UserFilter filter = new UserFilter(null, "%ov%", LocalDate.now());
+        var users = userRepository.findAllByFilter(filter);
+        assertThat(users).isEmpty();
+    }
 
     @Test
     void checkProjections(){

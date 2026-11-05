@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long>, FilterUserRepository {
 
     @Query("select u from User u " +
             "where u.firstName like %:firstname% and u.lastName like %:lastname%")

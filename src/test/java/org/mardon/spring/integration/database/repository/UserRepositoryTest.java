@@ -11,6 +11,7 @@ import org.mardon.spring.dto.UserFilter;
 import org.mardon.spring.integration.annotation.IT;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -27,6 +28,7 @@ class UserRepositoryTest {
     private final UserRepository userRepository;
 
     @Test
+    @Commit
     void checkAuditing(){
         var ivan = userRepository.findById(1L).get();
         Instant now = Instant.now();

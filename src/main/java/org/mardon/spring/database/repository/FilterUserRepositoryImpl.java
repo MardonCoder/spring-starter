@@ -18,5 +18,6 @@ public class FilterUserRepositoryImpl implements FilterUserRepository {
     public List<User> findAllByFilter(UserFilter filter) {
         var criteriaBuilder = entityManager.getCriteriaBuilder();
 
+        return Collections.emptyList();
     }
 }

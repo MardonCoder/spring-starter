@@ -43,8 +43,10 @@ spring:
   sql:
     init:
       mode: always # Выполнять скрипты всегда (never, embedded, always)
-      schema-locations: classpath:schema.sql
-      data-locations: classpath:data.sql
+      schema-locations:
+        - classpath:sql/schema.sql
+        - classpath:sql/audit.sql
+      data-locations: classpath:sql/data.sql
 
   jpa:
     properties:

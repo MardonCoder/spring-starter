@@ -12,6 +12,7 @@ import org.mardon.spring.integration.annotation.IT;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @RequiredArgsConstructor
 class UserRepositoryTest {
     private final UserRepository userRepository;
+
+    @Test
+    void checkAuditing(){
+        var ivan = userRepository.findById(1L).get();
+        Instant now = Instant.now();
+        var birthDate = ivan.getBirthDate();
+        ivan.setBirthDate(ivan.getBirthDate().plusYears(1L));
+        userRepository.flush();
+        assertThat(ivan.getBirthDate()).isAfter(birthDate);
+        assertThat(ivan.getUpdatedAt()).isAfter(now);
+    }
 
     @Test
     void checkCustomImplementation(){

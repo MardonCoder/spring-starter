@@ -7,3 +7,6 @@ services:
       POSTGRES_PASSWORD: mypassword
     ports:
       - "5432:5432"
+    volumes:
+      - ./src/main/resources/sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./src/main/resources/sql/audit.sql:/docker-entrypoint-initdb.d/02-audit.sql

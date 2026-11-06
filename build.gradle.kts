@@ -3,6 +3,8 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
     id("io.freefair.lombok") version "9.8.2"
     id("java")
+    // Плагин для кодогенерации jOOQ
+    id("org.jooq.jooq-codegen-gradle") version "3.21.9"
 }
 
 group = "org.mardon"
@@ -16,8 +18,14 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    // стартер жука
+    implementation("org.springframework.boot:spring-boot-starter-jooq")
+
     implementation("org.postgresql:postgresql")
     implementation("org.springframework.data:spring-data-envers")
+
+    // Драйвер PostgreSQL для кодогенератора (в официальном плагине конфигурация называется jooqCodegen)
+    jooqCodegen("org.postgresql:postgresql:42.7.4")
 
     // auto docker launch on project launch
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
@@ -40,6 +48,39 @@ dependencies {
 //    implementation("org.springframework:spring-core:$springVersion")
 //    implementation("org.springframework:spring-context:$springVersion")
 //    implementation("jakarta.annotation:jakarta.annotation-api:$jakartaAnnotationVersion")
+}
+
+jooq {
+    configuration {
+        logging = org.jooq.meta.jaxb.Logging.WARN
+        jdbc {
+            driver = "org.postgresql.Driver"
+            url = "jdbc:postgresql://localhost:5432/mydb"
+            user = "myuser"
+            password = "mypassword"
+        }
+        generator {
+            name = "org.jooq.codegen.DefaultGenerator"
+            database {
+                name = "org.jooq.meta.postgres.PostgresDatabase"
+                inputSchema = "public"
+                includes = ".*"
+                excludes = ""
+            }
+            target {
+                packageName = "org.mardon.generated.jooq"
+                directory = "build/generated-src/jooq/main"
+            }
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir("build/generated-src/jooq/main")
+        }
+    }
 }
 
 tasks.test {

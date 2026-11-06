@@ -10,6 +10,10 @@ ADD COLUMN created_by VARCHAR(32);
 ALTER TABLE users
 ADD COLUMN last_updated_by VARCHAR(32);
 
+DROP INDEX IF EXISTS idx_users_aud_id;
+DROP TABLE IF EXISTS users_aud;
+DROP TABLE IF EXISTS revision;
+
 -- Таблица сущности ревизий (класс Revision)
 CREATE TABLE IF NOT EXISTS revision (
     id SERIAL PRIMARY KEY,

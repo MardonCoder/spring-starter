@@ -28,6 +28,12 @@ class UserRepositoryTest {
     private final UserRepository userRepository;
 
     @Test
+    void checkJdbcTemplate(){
+        var users = userRepository.findAllByCompanyIdAndRole(1, Role.USER);
+        assertThat(users).hasSize(1);
+    }
+
+    @Test
     @Commit
     void checkAuditing(){
         var ivan = userRepository.findById(1L).get();
@@ -85,5 +91,6 @@ class UserRepositoryTest {
             slice = userRepository.findAllBy(slice.nextPageable());
             slice.forEach(user -> System.out.println(user.getCompany().getName()));
         }
+        assertThat(slice).isNotEmpty();
     }
 }

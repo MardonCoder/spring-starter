@@ -3,6 +3,7 @@ package org.mardon.spring.database.repository;
 import jakarta.persistence.LockModeType;
 import jakarta.persistence.QueryHint;
 import lombok.RequiredArgsConstructor;
+import org.mardon.spring.database.entity.Company;
 import org.mardon.spring.database.entity.Role;
 import org.mardon.spring.database.entity.User;
 import org.mardon.spring.database.pool.ConnectionPool;

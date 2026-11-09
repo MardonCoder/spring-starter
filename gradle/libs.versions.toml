@@ -1,0 +1,18 @@
+[versions]
+# Plugins
+springBoot = "4.1.1"
+springDependencyManagement = "1.1.7"
+freefairLombok = "9.8.2"
+jooqCodegen = "3.21.9"
+
+# Dependencies
+testcontainers = "2.0.5"
+
+[libraries]
+testcontainers-postgresql = { module = "org.testcontainers:testcontainers-postgresql", version.ref = "testcontainers" }
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }
+freefair-lombok = { id = "io.freefair.lombok", version.ref = "freefairLombok" }
+jooq-codegen = { id = "org.jooq.jooq-codegen-gradle", version.ref = "jooqCodegen" }

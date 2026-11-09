@@ -3,8 +3,8 @@ db:
   password: test
 
 spring:
-  docker:
-    compose:
-      skip:
-        in-tests: false
+  datasource:
+    url:
+    username: test
+    password: test
 

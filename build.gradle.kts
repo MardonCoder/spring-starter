@@ -1,10 +1,9 @@
 plugins {
-    id("org.springframework.boot") version "4.1.1"
-    id("io.spring.dependency-management") version "1.1.7"
-    id("io.freefair.lombok") version "9.8.2"
-    id("java")
-    // Плагин для кодогенерации jOOQ
-    id("org.jooq.jooq-codegen-gradle") version "3.21.9"
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.freefair.lombok)
+    alias(libs.plugins.jooq.codegen) // плагин для кодогенерации jooq
+    java
 }
 
 group = "org.mardon"
@@ -18,22 +17,22 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.data:spring-data-envers")
+    implementation("org.postgresql:postgresql")
+
     // стартер жука
     implementation("org.springframework.boot:spring-boot-starter-jooq")
+    jooqCodegen("org.postgresql:postgresql") // отдельная зависимость для jooq
 
-    implementation("org.postgresql:postgresql")
-    implementation("org.springframework.data:spring-data-envers")
-
-    // Драйвер PostgreSQL для кодогенератора (в официальном плагине конфигурация называется jooqCodegen)
-    jooqCodegen("org.postgresql:postgresql:42.7.4")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation(libs.testcontainers.postgresql)
 
     // auto docker launch on project launch
     developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-
     // Добавить для работы Docker Compose в тестах:
     testImplementation("org.springframework.boot:spring-boot-docker-compose")
+
 
 //    val springVersion = "7.0.9"
 //    val assertjVersion = "3.27.7"

@@ -8,10 +8,12 @@ import org.mardon.spring.database.entity.User;
 import org.mardon.spring.database.repository.UserRepository;
 import org.mardon.spring.dto.PersonalInfo;
 import org.mardon.spring.dto.UserFilter;
+import org.mardon.spring.integration.IntegrationTestBase;
 import org.mardon.spring.integration.annotation.IT;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -22,9 +24,8 @@ import java.util.logging.Filter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-@IT
 @RequiredArgsConstructor
-class UserRepositoryTest {
+class UserRepositoryTest extends IntegrationTestBase {
     private final UserRepository userRepository;
 
     @Test
@@ -41,7 +42,7 @@ class UserRepositoryTest {
     }
 
     @Test
-    @Commit
+//    @Commit
     void checkAuditing(){
         var ivan = userRepository.findById(1L).get();
         Instant now = Instant.now();

@@ -30,24 +30,25 @@ logging:
 #    path: /
 
 spring:
-  docker:
-    compose:
-      # Поведение при старте: always, if-running, ignore (по умолчанию: always)
-      lifecycle-management: start-and-stop
-      # Поведение при остановке приложения: stop, down (down удалит контейнеры и сеть)
-      stop:
-        command: stop
-      # Тайм-аут ожидания готовности контейнера
-      readiness:
-        timeout: 2m
-
+  # Я ПОКА ОТОШЁЛ ОТ ДОКЕРА И SQL INIT В ПОЛЬЗУ TESTCONTAINERS ИЗ-ЗА ТОГО ЧТО СЕЙЧАС ДЕЛАЮ ТОЛЬКО ТЕСТЫ
+#  docker:
+#    compose:
+#      # Поведение при старте: always, if-running, ignore (по умолчанию: always)
+#      lifecycle-management: start-and-stop
+#      # Поведение при остановке приложения: stop, down (down удалит контейнеры и сеть)
+#      stop:
+#        command: stop
+#      # Тайм-аут ожидания готовности контейнера
+#      readiness:
+#        timeout: 2m
+#
   sql:
     init:
       mode: always # Выполнять скрипты всегда (never, embedded, always)
       schema-locations:
         - classpath:sql/schema.sql
         - classpath:sql/audit.sql
-      data-locations: classpath:sql/data.sql
+#      data-locations: classpath:sql/data.sql теперь через аннотацию данные накатываются
 
   jpa:
     properties:

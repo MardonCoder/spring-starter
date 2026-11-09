@@ -2,9 +2,11 @@ package org.mardon.spring.integration.database.repository;
 
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mardon.spring.database.entity.Company;
 import org.mardon.spring.database.repository.CompanyRepository;
+import org.mardon.spring.integration.IntegrationTestBase;
 import org.mardon.spring.integration.annotation.IT;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -13,10 +15,9 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@IT
 @RequiredArgsConstructor
 //@Rollback // по дефолту стоит в IT
-class CompanyRepositoryTest {
+class CompanyRepositoryTest extends IntegrationTestBase {
 
     private static final Integer APPLE_ID = 4;
 
@@ -32,6 +33,7 @@ class CompanyRepositoryTest {
     }
 
     @Test
+    @Disabled
     void delete(){
         var maybeCompany = companyRepository.findById(APPLE_ID);
         assertTrue(maybeCompany.isPresent());

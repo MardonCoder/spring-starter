@@ -30,13 +30,6 @@ dependencies {
     testImplementation(libs.testcontainers.junit.jupiter)
     testImplementation(libs.testcontainers.postgresql)
 
-    // auto docker launch on project launch
-//    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
-
-    // Добавить для работы Docker Compose в тестах:
-//    testImplementation("org.springframework.boot:spring-boot-docker-compose")
-
-
 //    val springVersion = "7.0.9"
 //    val assertjVersion = "3.27.7"
 //    val jakartaAnnotationVersion = "3.0.0"

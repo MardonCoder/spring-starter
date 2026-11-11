@@ -5,11 +5,13 @@ import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mardon.spring.database.entity.Company;
+import org.mardon.spring.database.entity.User;
 import org.mardon.spring.database.repository.CompanyRepository;
 import org.mardon.spring.integration.IntegrationTestBase;
 import org.mardon.spring.integration.annotation.IT;
 import org.springframework.transaction.support.TransactionTemplate;
 
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;

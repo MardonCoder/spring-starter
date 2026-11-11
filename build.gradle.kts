@@ -19,19 +19,22 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.data:spring-data-envers")
     implementation("org.postgresql:postgresql")
+    implementation("org.springframework.boot:spring-boot-starter-liquibase")
 
     // стартер жука
     implementation("org.springframework.boot:spring-boot-starter-jooq")
     jooqCodegen("org.postgresql:postgresql") // отдельная зависимость для jooq
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation(libs.testcontainers.junit.jupiter)
     testImplementation(libs.testcontainers.postgresql)
 
     // auto docker launch on project launch
-    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+//    developmentOnly("org.springframework.boot:spring-boot-docker-compose")
 
     // Добавить для работы Docker Compose в тестах:
-    testImplementation("org.springframework.boot:spring-boot-docker-compose")
+//    testImplementation("org.springframework.boot:spring-boot-docker-compose")
 
 
 //    val springVersion = "7.0.9"
@@ -84,4 +87,5 @@ sourceSets {
 
 tasks.test {
     useJUnitPlatform()
+    jvmArgs("-XX:+EnableDynamicAgentLoading")
 }

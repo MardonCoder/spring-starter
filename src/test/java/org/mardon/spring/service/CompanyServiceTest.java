@@ -21,7 +21,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 class CompanyServiceTest {
-
     public static final Integer COMPANY_ID = 1;
 
     @Mock

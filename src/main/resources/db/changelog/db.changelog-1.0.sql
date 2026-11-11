@@ -1,16 +1,14 @@
-DROP TABLE IF EXISTS users_chat CASCADE;
-DROP TABLE IF EXISTS payment CASCADE;
-DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS company_locales CASCADE;
-DROP TABLE IF EXISTS company CASCADE;
-DROP TABLE IF EXISTS chat CASCADE;
+--liquibase formatted sql
 
+--changeset mardon:1
 CREATE TABLE IF NOT EXISTS company
 (
     id SERIAL PRIMARY KEY ,
     name VARCHAR(64) NOT NULL UNIQUE
 );
+--rollback DROP TABLE company;
 
+--changeset mardon:2
 CREATE TABLE IF NOT EXISTS company_locales
 (
     company_id INT REFERENCES company (id),
@@ -19,6 +17,7 @@ CREATE TABLE IF NOT EXISTS company_locales
     PRIMARY KEY (company_id, lang)
 );
 
+--changeset mardon:3
 CREATE TABLE IF NOT EXISTS users
 (
     id BIGSERIAL PRIMARY KEY ,
@@ -30,6 +29,7 @@ CREATE TABLE IF NOT EXISTS users
     company_id INT REFERENCES company (id)
 );
 
+--changeset mardon:4
 CREATE TABLE IF NOT EXISTS payment
 (
     id BIGSERIAL PRIMARY KEY ,
@@ -37,12 +37,14 @@ CREATE TABLE IF NOT EXISTS payment
     receiver_id BIGINT NOT NULL REFERENCES users (id)
 );
 
+--changeset mardon:5
 CREATE TABLE IF NOT EXISTS chat
 (
     id BIGSERIAL PRIMARY KEY ,
     name VARCHAR(64) NOT NULL UNIQUE
 );
 
+--changeset mardon:6
 CREATE TABLE IF NOT EXISTS users_chat
 (
     id BIGSERIAL PRIMARY KEY ,

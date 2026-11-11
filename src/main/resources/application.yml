@@ -2,7 +2,7 @@ db:
   username: ${username.value:postgres}
   password: pass
   driver: PostgresDriver
-  url: posgres:5432
+  url: postgres:5432
   hosts: localhost,127.0.0.1
   properties:
     first: 123
@@ -42,13 +42,19 @@ spring:
 #      readiness:
 #        timeout: 2m
 #
-  sql:
-    init:
-      mode: always # Выполнять скрипты всегда (never, embedded, always)
-      schema-locations:
-        - classpath:sql/schema.sql
-        - classpath:sql/audit.sql
+#  sql:
+#    init:
+#      mode: always # Выполнять скрипты всегда (never, embedded, always)
+#      schema-locations:
+#        - classpath:sql/schema.sql
+#        - classpath:sql/audit.sql
 #      data-locations: classpath:sql/data.sql теперь через аннотацию данные накатываются
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/app_db}
+    username: ${SPRING_DATASOURCE_USERNAME:app_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:app_password}
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     properties:
@@ -58,3 +64,7 @@ spring:
         show_sql: true
         format_sql: true
         hbm2ddl.auto: validate
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml

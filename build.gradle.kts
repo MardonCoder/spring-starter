@@ -20,6 +20,8 @@ dependencies {
     implementation("org.springframework.data:spring-data-envers")
     implementation("org.postgresql:postgresql")
     implementation("org.springframework.boot:spring-boot-starter-liquibase")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.apache.tomcat.embed:tomcat-embed-jasper")
 
     // стартер жука
     implementation("org.springframework.boot:spring-boot-starter-jooq")

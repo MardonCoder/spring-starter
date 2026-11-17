@@ -64,6 +64,4 @@ public interface UserRepository extends
             "birth_date birthDate " +
             "FROM users WHERE company_id = :companyId")
     List<PersonalInfo2> findAllByCompanyId(Integer companyId);
-
-    // TODO: НЕ ЗАБУДЬ ИЗУЧИТЬ JPA SPECIFICATION
 }

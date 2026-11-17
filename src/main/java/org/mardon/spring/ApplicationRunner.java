@@ -20,13 +20,6 @@ public class ApplicationRunner {
     static void main(String[] args) {
         var context = SpringApplication.run(ApplicationRunner.class, args);
         log.info("All good");
-
-        var entityManager = context.getBean(EntityManager.class);
-
-        var result = entityManager.createQuery("select count(u.id) from User u", Long.class).getSingleResult();
-        System.out.println("~~~~~~~~~~~~~~~~~РАЗМЕР ПОЛУЧИВШИЙСЯ~~~~~~~~~~~~~~~~~~~~");
-        System.out.println(result);
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
 }

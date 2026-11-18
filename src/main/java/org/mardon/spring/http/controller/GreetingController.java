@@ -1,9 +1,10 @@
 package org.mardon.spring.http.controller;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -11,8 +12,16 @@ import org.springframework.web.servlet.ModelAndView;
 public class GreetingController {
 
 //    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    @GetMapping("/hello")
-    public ModelAndView hello(ModelAndView hello){
+    @GetMapping("/hello/{id}")
+    public ModelAndView hello(ModelAndView hello, HttpServletRequest request,
+                              @RequestParam Integer age,
+                              @RequestHeader String accept,
+                              @CookieValue("JSESSIONID") String jsessionId,
+                              @PathVariable Integer id){
+//        var ageParamValue = request.getParameter("age");
+//        var acceptHeader = request.getHeader("accept");
+//        var cookies = request.getCookies();
+
         hello.setViewName("greeting/hello");
         return hello;
     }

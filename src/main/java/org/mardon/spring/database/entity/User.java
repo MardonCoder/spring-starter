@@ -23,7 +23,7 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
-public class User extends AuditingEntity<Long>{
+public class  User extends AuditingEntity<Long>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
